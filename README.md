@@ -2,7 +2,7 @@
 
 [Live demo](https://lichard49.github.io/home-stethoscope/)
 
-# Supported Devices
+## Supported Devices
 
 Web audio is still inconsistent across many platforms and browsers.
 Device and browser combinations that work are:
