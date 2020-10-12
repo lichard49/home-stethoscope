@@ -1,11 +1,31 @@
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/> 
+    <link rel="stylesheet" href="css/simple-grid.min.css">
   </head>
 
   <body>
-    <canvas id="amplitude-graph" width="100%"></canvas>
-    <canvas id="frequency-graph" width="100%"></canvas>
-    <button onclick="start()">Start</button>
+    <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1>Home Stethoscope</h1>
+          </div>
+        </div>
+      <div class="row">
+        <div class="col-12">
+          <button onclick="start()">Start</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-9">
+          <canvas id="amplitude-graph"></canvas>
+          <canvas id="frequency-graph"></canvas>
+        </div>
+        <div class="col-3">
+          Text can go here hihi
+        </div>
+      </div>
+    </div>
 
     <script type="text/javascript">
     // mostly from: https://github.com/mdn/voice-change-o-matic/blob/gh-pages/scripts/app.js#L123-L167
@@ -48,8 +68,12 @@
       let source;
 
       const amplitudeCanvas = document.getElementById('amplitude-graph');
+      amplitudeCanvas.style.width = '100%';
+      amplitudeCanvas.width  = amplitudeCanvas.offsetWidth;
       const amplitudeCanvasCtx = amplitudeCanvas.getContext('2d');
       const frequencyCanvas = document.getElementById('frequency-graph');
+      frequencyCanvas.style.width = '100%';
+      frequencyCanvas.width  = frequencyCanvas.offsetWidth;
       const frequencyCanvasCtx = frequencyCanvas.getContext('2d');
 
       if (navigator.mediaDevices.getUserMedia) {
@@ -79,12 +103,11 @@
       }
 
       function drawAmplitudeGraph() {
-        amplitudeCanvasCtx.fillStyle = 'rgb(200, 200, 200)';
+        amplitudeCanvasCtx.fillStyle = 'rgb(0, 0, 0)';
         amplitudeCanvasCtx.fillRect(0, 0, amplitudeCanvas.width, amplitudeCanvas.height);
 
         amplitudeCanvasCtx.lineWidth = 2;
-        amplitudeCanvasCtx.strokeStyle = 'rgb(0, 0, 0)';
-
+        amplitudeCanvasCtx.strokeStyle = 'rgb(0, 255, 0)';
         amplitudeCanvasCtx.beginPath();
 
         const sliceWidth = amplitudeCanvas.width * 1.0 / amplitudeBufferLength;
